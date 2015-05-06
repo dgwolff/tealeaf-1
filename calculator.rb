@@ -27,14 +27,14 @@ loop do
     say "Result is #{result}"
   else
     if num2 == '0'
-      say "Error! Cannot divide by 0!"
+      say 'Error! Cannot divide by 0!'
     else
       result = num1.to_f / num2.to_f
       say "Result is #{result}"
     end
   end
 
-  say "Would you like to calculate again (Yes/No)?"
+  say 'Would you like to calculate again (Yes/No)?'
   calculate_again = gets.chomp.downcase
   break if calculate_again == 'n' || calculate_again == 'no'
 end
