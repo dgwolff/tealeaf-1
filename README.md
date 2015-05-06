@@ -1,3 +1,3 @@
-# tealeaf-calculator
+# tealeaf-101
 
-The first assignment from [Tealeaf's](https://gotealeaf.com) Introduction to Ruby and Web Development course.
+Projects from Week 1 of [Tealeaf's](https://gotealeaf.com) Introduction to Ruby and Web Development course.
