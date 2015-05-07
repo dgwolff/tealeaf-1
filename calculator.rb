@@ -1,65 +1,57 @@
 # Calculator
 
 class String
-  # Check whether user input is a number
-  def number?
+  def valid_number?
     /\A[-+]?\d+\z/ === self
   end
-  # Check whether user input is a number from 1-4
-  def valid_option?
+
+  def valid_operator?
     /[1-4]/ === self
   end
 end
 
-# Print defined text
-def say(msg)
-  puts "=> #{msg}"
-end
-
-# Print result
-def say_result(result)
+def print_result(result)
   puts "=> The result is #{result}"
 end
 
-# Begin program
 loop do
-  say 'Welcome to the simple calculator!'
-  # Get num1 from user, permit only numeric input
+  puts 'Welcome to the simple calculator!'
+
   begin
-    say "What's the first number?"
+    puts "What's the first number?"
     num1 = gets.chomp
-  end until num1.number?
-  # Get num2 from user, permit only numeric input
+  end until num1.valid_number?
+
   begin
-    say "What's the second number?"
+    puts "What's the second number?"
     num2 = gets.chomp
-  end until num2.number?
-  # Get selection from user, permit only numeric input from 1-4
+  end until num2.valid_number?
+
   begin
-    say 'Choose an operation:'
-    say '1) add 2) subtract 3) multiply 4) divide'
+    puts 'Choose an operation:'
+    puts '1) add 2) subtract 3) multiply 4) divide'
     operator = gets.chomp
-  end until operator.valid_option?
+  end until operator.valid_operator?
 
   if operator == '1'
     result = num1.to_i + num2.to_i
-    say_result(result)
+    print_result(result)
   elsif operator == '2'
     result = num1.to_i - num2.to_i
-    say_result(result)
+    print_result(result)
   elsif operator == '3'
     result = num1.to_i * num2.to_i
-    say_result(result)
+    print_result(result)
   else
     if num2 == '0'
-      say 'Error! Cannot divide by 0!'
+      puts 'Error! Cannot divide by 0!'
     else
       result = num1.to_f / num2.to_f
-      say_result(result)
+      print_result(result)
     end
   end
-  # Run again?
-  say 'Would you like to calculate again (Yes/No)?'
+
+  puts 'Would you like to calculate again (Yes/No)?'
   calculate_again = gets.chomp.downcase
   break if calculate_again != 'y' && calculate_again != 'yes'
 end
