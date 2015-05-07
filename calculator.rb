@@ -5,10 +5,14 @@ num1 = []
 num2 = []
 operator = []
 
-# Check whether user input is numeric
 class String
-  def is_i?
+  # Check whether user input is a number
+  def number?
     /\A[-+]?\d+\z/ === self
+  end
+  # Check whether user input is a number from 1-4
+  def valid_option?
+    /[1-4]/ === self
   end
 end
 
@@ -29,18 +33,21 @@ loop do
   loop do
     say "What's the first number?"
     num1 = gets.chomp
-    break if num1.is_i?
+    break if num1.number?
   end
   # Get num2 from user, permit only numeric input
   loop do
     say "What's the second number?"
     num2 = gets.chomp
-    break if num2.is_i?
+    break if num2.number?
   end
   # Get selection from user, permit only numeric input from 1-4
-  say 'Choose an operation:'
-  say '1) add 2) subtract 3) multiply 4) divide'
-  operator = gets.chomp
+  loop do
+    say 'Choose an operation:'
+    say '1) add 2) subtract 3) multiply 4) divide'
+    operator = gets.chomp
+    break if operator.valid_option?
+  end
 
   if operator == '1'
     result = num1.to_i + num2.to_i
