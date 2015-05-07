@@ -1,10 +1,5 @@
 # Simple calculator
 
-# Initialise variables
-num1 = []
-num2 = []
-operator = []
-
 class String
   # Check whether user input is a number
   def number?
@@ -30,24 +25,21 @@ end
 loop do
   say 'Welcome to the simple calculator!'
   # Get num1 from user, permit only numeric input
-  loop do
+  begin
     say "What's the first number?"
     num1 = gets.chomp
-    break if num1.number?
-  end
+  end until num1.number?
   # Get num2 from user, permit only numeric input
-  loop do
+  begin
     say "What's the second number?"
     num2 = gets.chomp
-    break if num2.number?
-  end
+  end until num2.number?
   # Get selection from user, permit only numeric input from 1-4
-  loop do
+  begin
     say 'Choose an operation:'
     say '1) add 2) subtract 3) multiply 4) divide'
     operator = gets.chomp
-    break if operator.valid_option?
-  end
+  end until operator.valid_option?
 
   if operator == '1'
     result = num1.to_i + num2.to_i
