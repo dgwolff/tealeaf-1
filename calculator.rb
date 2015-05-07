@@ -1,14 +1,7 @@
 # Calculator
 
-class String
-  def valid_number?
-    /\A[-+]?\d+\z/ === self
-  end
-
-  def valid_operator?
-    /[1-4]/ === self
-  end
-end
+VALID_NUMBER_INPUT = /^-?\d*(\.\d+)?$/
+VALID_OPERATOR_SELECTION = /^[1-4]$/
 
 def print_result(result)
   puts "=> The result is #{result}"
@@ -20,27 +13,27 @@ loop do
   begin
     puts "What's the first number?"
     num1 = gets.chomp
-  end until num1.valid_number?
+  end until num1.match(VALID_NUMBER_INPUT)
 
   begin
     puts "What's the second number?"
     num2 = gets.chomp
-  end until num2.valid_number?
+  end until num2.match(VALID_NUMBER_INPUT)
 
   begin
     puts 'Choose an operation:'
     puts '1) add 2) subtract 3) multiply 4) divide'
     operator = gets.chomp
-  end until operator.valid_operator?
+  end until operator.match(VALID_OPERATOR_SELECTION)
 
   if operator == '1'
-    result = num1.to_i + num2.to_i
+    result = num1.to_f + num2.to_f
     print_result(result)
   elsif operator == '2'
-    result = num1.to_i - num2.to_i
+    result = num1.to_f - num2.to_f
     print_result(result)
   elsif operator == '3'
-    result = num1.to_i * num2.to_i
+    result = num1.to_f * num2.to_f
     print_result(result)
   else
     if num2 == '0'
