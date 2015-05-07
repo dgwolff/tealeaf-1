@@ -36,5 +36,5 @@ loop do
 
   say 'Would you like to calculate again (Yes/No)?'
   calculate_again = gets.chomp.downcase
-  break if calculate_again == 'n' || calculate_again == 'no'
+  break if calculate_again != 'y' && calculate_again != 'yes'
 end
