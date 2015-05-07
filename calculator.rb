@@ -1,4 +1,4 @@
-# Simple calculator
+# Calculator
 
 class String
   # Check whether user input is a number
