@@ -6,38 +6,15 @@
 # 4. Group instance methods into classes
 
 class Card
-  attr_accessor :suit, :value
+  attr_accessor :suit, :face_value
 
-  def initialize(s, v)
+  def initialize(s, fv)
     @suit = s
-    @value = v
-  end
-
-  def to_s
-    "The card is #{value} of #{suit}"
+    @face_value = fv
   end
 end
 
 class Deck
-  attr_accessor :cards
-
-  def initialize
-    @cards = []
-    ['H', 'D', 'S', 'C'].each do |suit|
-      ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'].each do |face_value|
-        @cards << Card.new(suit, face_value)
-      end
-    end
-    scramble!
-  end
-
-  def scramble!
-    cards.shuffle!
-  end
-
-  def deal
-    cards.pop
-  end
 end
 
 class Player
@@ -46,22 +23,10 @@ end
 class Dealer
 end
 
-class Blackjack
-  attr_accessor :player, :dealer, :deck
-
-  def initialize
-    @player = Player.new
-    @dealer = Dealer.new
-    @deck = Deck.new
-  end
-
-  def run
-    deal_cards
-    show_flop
-    player_turn
-    dealer_turn
-    who_won?
-  end
+class Hand
 end
 
-Blackjack.new.run
+c1 = Card.new
+
+
+
